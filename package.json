@@ -2,7 +2,7 @@
   "name": "hmvsoluciones-saas-mvc",
   "version": "0.0.0",
   "private": true,
-  "description": "Description for Hmvsoluciones Saas Mvc",
+  "description": "Description for HmvSoluciones Saas Mvc",
   "license": "UNLICENSED",
   "scripts": {
     "app:start": "./mvnw -ntp --batch-mode",

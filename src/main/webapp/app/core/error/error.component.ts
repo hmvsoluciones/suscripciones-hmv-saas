@@ -1,5 +1,5 @@
 import { type ComputedRef, type Ref, defineComponent, inject, ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useLoginModal } from '@/account/login-modal';
 
 export default defineComponent({
@@ -12,6 +12,10 @@ export default defineComponent({
     const error403: Ref<boolean> = ref(false);
     const error404: Ref<boolean> = ref(false);
     const route = useRoute();
+    const router = useRouter();
+    const goHome = () => {
+      router.push('/');
+    };
 
     if (route.meta) {
       errorMessage.value = route.meta.errorMessage ?? null;
@@ -26,6 +30,7 @@ export default defineComponent({
       errorMessage,
       error403,
       error404,
+      goHome,
     };
   },
 });

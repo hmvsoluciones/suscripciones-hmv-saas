@@ -1,18 +1,22 @@
 import { type Ref, computed, defineComponent, inject, ref } from 'vue';
-
 import { useRouter } from 'vue-router';
 import { useLoginModal } from '@/account/login-modal';
 import type AccountService from '@/account/account.service';
 import EntitiesMenu from '@/entities/entities-menu.vue';
-
 import { useStore } from '@/store';
-import { PRODUCT_NAME } from '@/shared/config/constants/constants';
+import { COMPANY_NAME } from '@/shared/config/constants/constants';
 
 export default defineComponent({
   compatConfig: { MODE: 3 },
-  name: 'JhiNavbar',
+  name: 'Sidebar',
   components: {
     'entities-menu': EntitiesMenu,
+  },
+  props: {
+    visible: {
+      type: Boolean,
+      required: true,
+    },
   },
   setup() {
     const { showLogin } = useLoginModal();
@@ -56,7 +60,7 @@ export default defineComponent({
       openAPIEnabled,
       inProduction,
       authenticated,
-      productName: PRODUCT_NAME,
+      companyName: COMPANY_NAME,
     };
   },
   methods: {

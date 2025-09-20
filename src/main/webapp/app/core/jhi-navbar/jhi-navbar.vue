@@ -1,8 +1,11 @@
 <template>
   <b-navbar data-cy="navbar" toggleable="md" type="dark" class="jh-navbar">
+    <b-button variant="outline-secondary" @click="$emit('toggle-sidebar')">
+      <font-awesome-icon icon="bars" />
+    </b-button>
     <b-navbar-brand class="logo" b-link to="/">
       <span class="logo-img"></span>
-      <span class="navbar-title">HmvsolucionesSaasMvc</span> <span class="navbar-version">{{ version }}</span>
+      <span class="navbar-title">{{ productName }}</span> <span class="navbar-version">{{ version }}</span>
     </b-navbar-brand>
     <b-navbar-toggle
       right
@@ -23,6 +26,14 @@
             <font-awesome-icon icon="home" />
             <span>Inicio</span>
           </span>
+        </b-nav-item>
+        <b-nav-item to="/" exact-active-class="active">
+          <b-icon icon="speedometer2" class="mr-1"></b-icon>
+          Dashboard
+        </b-nav-item>
+        <b-nav-item to="/" exact>
+          <b-icon icon="calendar3" class="mr-2"></b-icon>
+          Servicios
         </b-nav-item>
         <b-nav-item-dropdown right id="entity-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
           <template #button-content>
@@ -45,7 +56,7 @@
         >
           <template #button-content>
             <span class="navbar-dropdown-menu">
-              <font-awesome-icon icon="users-cog" />
+              <font-awesome-icon icon="users" />
               <span class="no-bold">Administración</span>
             </span>
           </template>
@@ -200,12 +211,12 @@
   height: 45px;
   display: inline-block;
   vertical-align: middle;
-  width: 45px;
+  width: 150px;
 }
 
 .logo-img {
   height: 100%;
-  background: url('/content/images/logo-jhipster.png') no-repeat center center;
+  background: url('/content/images/custom/logo-hmv-large.png') no-repeat center center;
   background-size: contain;
   width: 100%;
   filter: drop-shadow(0 0 0.05rem white);
