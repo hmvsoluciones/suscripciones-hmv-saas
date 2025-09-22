@@ -5,6 +5,8 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f8faf5;
   color: #2e3a2f;
+  margin: 0;
+  padding: 0;
 }
 
 /* ==========================================================================
@@ -23,7 +25,7 @@ table.table {
   background: linear-gradient(90deg, #9dc77c, #bddfa1);
   color: #2e3a2f;
   font-weight: 700;
-  font-size: 8px !important;
+  font-size: 12px !important;
   letter-spacing: 0.05em;
   box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.08);
 }
@@ -55,40 +57,131 @@ table.table {
 }
 
 /* ==========================================================================
-   Botones en tabla
+   Tablas Responsivas (Cards en móvil centradas)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .table-responsive table,
+  .table-responsive thead,
+  .table-responsive tbody,
+  .table-responsive th,
+  .table-responsive td,
+  .table-responsive tr {
+    display: block;
+    width: 100%;
+  }
+
+  .table-responsive thead {
+    display: none;
+  }
+
+  .table-responsive tbody tr {
+    margin: 1rem auto;
+    border: 1px solid #e6ebdd;
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    padding: 1rem 1.5rem;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrado */
+    justify-content: center;
+    text-align: center;
+  }
+
+  .table-responsive tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 14px;
+    border: none;
+    width: 100%;
+  }
+
+  .table-responsive tbody td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #4c7c48;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    margin-right: 10px;
+    flex: 1;
+    text-align: left;
+  }
+
+  .table-responsive tbody td {
+    flex: 2;
+    text-align: center; /* Centrado */
+    padding: 6px 0;
+  }
+
+  .table-responsive tbody td:first-child {
+    font-weight: 700;
+    font-size: 15px;
+    color: #2e3a2f;
+    margin-bottom: 5px;
+  }
+}
+
+/* ==========================================================================
+   Botones Personalizados
    ========================================================================== */
 .btn {
-  font-size: 13px;
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-weight: 600;
-  border: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  font-size: 13px !important;
+  padding: 8px 14px !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  border: none !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
 }
 
-.btn-info {
-  background-color: #4c7c48;
-  color: #fff;
-}
-.btn-info:hover {
-  background-color: #6da35e;
-}
-
+/* Primario HMV */
 .btn-primary {
-  background-color: #bddfa1;
-  color: #2e3a2f;
+  background-color: #c9e27e !important;
+  color: #2e3a2f !important;
 }
 .btn-primary:hover {
-  background-color: #9dc77c;
+  background-color: #b2cd6b !important;
+  color: #1e261e !important;
 }
 
+/* Secundario / Info */
+.btn-info {
+  background-color: #4c7c48 !important;
+  color: #fff !important;
+}
+.btn-info:hover {
+  background-color: #3c6339 !important;
+}
+
+/* Éxito */
+.btn-success {
+  background-color: #6da35e !important;
+  color: #fff !important;
+}
+.btn-success:hover {
+  background-color: #5a8a4d !important;
+}
+
+/* Advertencia */
+.btn-warning {
+  background-color: #f4a261 !important;
+  color: #2e3a2f !important;
+}
+.btn-warning:hover {
+  background-color: #e58d44 !important;
+  color: #fff !important;
+}
+
+/* Peligro */
 .btn-danger {
-  background-color: #e76f51;
-  color: #fff;
+  background-color: #e76f51 !important;
+  color: #fff !important;
 }
 .btn-danger:hover {
-  background-color: #d94e32;
+  background-color: #d94e32 !important;
 }
 
 /* ==========================================================================
@@ -124,54 +217,6 @@ table.table {
 }
 
 /* ==========================================================================
-   Paginación
-   ========================================================================== */
-.pagination {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-}
-
-.page-link {
-  border-radius: 30px;
-  padding: 8px 16px;
-  background-color: #bddfa1;
-  color: #2e3a2f;
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(201, 226, 126, 0.5);
-  transition: all 0.3s ease;
-  border: none;
-}
-
-.page-link:hover {
-  background-color: #9dc77c;
-  transform: scale(1.05);
-}
-
-.page-item.active .page-link {
-  background-color: #7fb84e;
-  color: white;
-  box-shadow: 0 6px 18px rgba(127, 184, 78, 0.7);
-  transform: scale(1.1);
-}
-
-.page-item.disabled .page-link {
-  background-color: #d6e5b3;
-  color: #9aa47f;
-  cursor: not-allowed;
-  box-shadow: none;
-}
-
-@media (max-width: 480px) {
-  .page-link {
-    padding: 6px 10px;
-    font-size: 0.875rem;
-  }
-}
-
-/* ==========================================================================
    Formularios
    ========================================================================== */
 form .form-group {
@@ -182,6 +227,8 @@ label {
   font-weight: 600;
   margin-bottom: 0.5rem;
   display: block;
+  color: #2e3a2f;
+  text-align: left;
 }
 
 input.form-control,
@@ -193,17 +240,20 @@ textarea.form-control {
   transition:
     border-color 0.3s,
     box-shadow 0.3s;
+  background-color: #fff;
+  color: #2e3a2f;
 }
 
 input.form-control:focus,
 select.form-control:focus,
 textarea.form-control:focus {
-  border-color: #bddfa1;
-  box-shadow: 0 0 0 0.2rem rgba(189, 223, 161, 0.4);
+  border-color: #c9e27e;
+  box-shadow: 0 0 0 0.2rem rgba(201, 226, 126, 0.4);
+  color: #2e3a2f;
 }
 
 /* ==========================================================================
-   Alertas (tipo Toast)
+   Alertas (Toast)
    ========================================================================== */
 .alert {
   border-radius: 10px;
@@ -211,9 +261,9 @@ textarea.form-control:focus {
   margin-bottom: 1rem;
   font-weight: 500;
   font-size: 1rem;
-  animation: fadeInDown 0.4s ease-out;
   position: relative;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: fadeInDown 0.4s ease-out;
 }
 
 .alert-success {
