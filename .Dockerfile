@@ -1,7 +1,7 @@
 # ============================
 # Etapa 1: Build con Maven y JDK 17
 # ============================
-FROM maven:3.9.0-eclipse-temurin-17 AS build
+FROM maven:3.9.9-eclipse-temurin-23 AS build
 WORKDIR /app
 
 # Copiar lo mínimo para cachear dependencias
@@ -16,7 +16,7 @@ RUN ./mvnw -Pprod -DskipTests clean package
 # ============================
 # Etapa 2: Runtime con JRE ligero
 # ============================
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:23-jre-alpine
 WORKDIR /app
 
 # Copiar el JAR generado en la etapa build
