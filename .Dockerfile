@@ -1,25 +1,33 @@
-# Etapa 1: build con Maven y JDK 17
+# ============================
+# Etapa 1: Build con Maven y JDK 17
+# ============================
 FROM maven:3.9.0-eclipse-temurin-17 AS build
 WORKDIR /app
 
-# Copiar solo lo necesario para cachear dependencias
+# Copiar lo mínimo para cachear dependencias
 COPY pom.xml mvnw ./
 COPY .mvn .mvn
 RUN chmod +x mvnw && ./mvnw dependency:go-offline -B
 
-# Copiar el código fuente y compilar en modo prod
+# Copiar código fuente y compilar en modo producción
 COPY src src
 RUN ./mvnw -Pprod -DskipTests clean package
 
-# Etapa 2: runtime con JRE ligero
+# ============================
+# Etapa 2: Runtime con JRE ligero
+# ============================
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
-# Copiar solo el jar generado
+# Copiar el JAR generado en la etapa build
 COPY --from=build /app/target/*.jar app.jar
 
-# Exponer el puerto interno
+# Railway asigna dinámicamente el puerto en $PORT
 EXPOSE 8080
 
-# Railway asigna el puerto con $PORT
-CMD ["sh", "-c", "java -Djava.security.egd=file:/dev/./urandom -jar app.jar --server.port=$PORT"]
+# Variables de entorno recomendadas para prod en Railway
+ENV SPRING_PROFILES_ACTIVE=prod \
+    JAVA_OPTS="-Xmx512m -Xms256m"
+
+# Usar $PORT en tiempo de ejecución
+CMD ["sh", "-c", "java $JAVA_OPTS -Dserver.port=$PORT -Djava.security.egd=file:/dev/./urandom -jar app.jar"]
