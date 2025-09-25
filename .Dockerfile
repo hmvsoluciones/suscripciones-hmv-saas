@@ -1,4 +1,4 @@
- Etapa de compilación
+ # Etapa de compilación
 FROM maven:3.9.4-eclipse-temurin-17 AS build
 WORKDIR /app
 COPY . .
