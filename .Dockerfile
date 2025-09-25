@@ -1,31 +1,32 @@
 # ============================
-# Etapa 1: Build con Maven y JDK 17
+# Etapa 1: Build con Maven y JDK 23 (para dev)
 # ============================
-FROM maven:3.9.9-eclipse-temurin-17 AS build
+FROM maven:3.9.9-eclipse-temurin-23 AS build
 WORKDIR /app
 
 # Copiar lo mínimo para cachear dependencias
 COPY pom.xml mvnw ./
 COPY .mvn .mvn
-RUN chmod +x mvnw
+RUN chmod +x mvnw && ./mvnw dependency:go-offline -B
 
 # Copiar código fuente y compilar en modo producción
 COPY src src
-RUN ./mvnw -Pprod
+# Usamos -DskipTests para no correr tests en build
+RUN ./mvnw clean package -DskipTests
 
 # ============================
-# Etapa 2: Runtime con JRE ligero
+# Etapa 2: Runtime con JRE 23 ligero
 # ============================
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:23-jre-jammy
 WORKDIR /app
 
-# Copiar el JAR generado en la etapa build
+# Copiar JAR generado en la etapa build
 COPY --from=build /app/target/*.jar app.jar
 
-# Railway asigna dinámicamente el puerto en $PORT
 EXPOSE 8080
 
 # Variables de entorno para prod
+ENV SPRING_PROFILES_ACTIVE=prod
 ENV JAVA_OPTS="-Xmx512m -Xms256m"
 
 # Usar $PORT en tiempo de ejecución
