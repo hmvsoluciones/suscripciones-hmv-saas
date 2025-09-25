@@ -26,7 +26,6 @@ COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
 
 # Variables de entorno para prod
-ENV SPRING_PROFILES_ACTIVE=prod
 ENV JAVA_OPTS="-Xmx512m -Xms256m"
 
 # Usar $PORT en tiempo de ejecución
