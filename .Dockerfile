@@ -7,11 +7,11 @@ WORKDIR /app
 # Copiar lo mínimo para cachear dependencias
 COPY pom.xml mvnw ./
 COPY .mvn .mvn
-RUN chmod +x mvnw && ./mvnw dependency:go-offline -B
+RUN chmod +x mvnw
 
 # Copiar código fuente y compilar en modo producción
 COPY src src
-RUN ./mvnw -Pprod -DskipTests clean package
+RUN ./mvnw -Pprod
 
 # ============================
 # Etapa 2: Runtime con JRE ligero
