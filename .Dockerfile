@@ -26,8 +26,8 @@ COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
 
 # Variables de entorno recomendadas para prod en Railway
-ENV SPRING_PROFILES_ACTIVE=prod \
-    JAVA_OPTS="-Xmx512m -Xms256m"
+ENV SPRING_PROFILES_ACTIVE=prod
+ENV JAVA_OPTS="-Xmx512m -Xms256m"
 
 # Usar $PORT en tiempo de ejecución
-CMD ["sh", "-c", "java $JAVA_OPTS -Dserver.port=$PORT -Djava.security.egd=file:/dev/./urandom -jar app.jar"]
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -Dserver.port=${PORT} -Djava.security.egd=file:/dev/./urandom -jar app.jar"]
