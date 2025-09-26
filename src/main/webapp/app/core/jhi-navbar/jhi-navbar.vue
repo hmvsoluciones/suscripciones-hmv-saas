@@ -1,8 +1,11 @@
 <template>
   <b-navbar data-cy="navbar" toggleable="md" type="dark" class="jh-navbar">
-    <b-button variant="outline-secondary" @click="$emit('toggle-sidebar')">
+    <!-- SOLO AGREGAR ESTE BOTÓN -->
+    <b-button variant="outline-light" class="me-2 sidebar-toggle" @click="toggleSidebar">
       <font-awesome-icon icon="bars" />
     </b-button>
+
+    <!-- RESTO DEL CÓDIGO ORIGINAL -->
     <b-navbar-brand class="logo" b-link to="/">
       <span class="logo-img"></span>
       <span class="navbar-title">{{ productName }}</span> <span class="navbar-version">{{ version }}</span>
@@ -128,7 +131,6 @@
 
 <script lang="ts" src="./jhi-navbar.component.ts"></script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 /* ==========================================================================
     Navbar
@@ -181,6 +183,18 @@
 
 .jh-navbar .jh-navbar-toggler:hover {
   color: #fff;
+}
+
+/* SOLO AGREGAR ESTOS ESTILOS PARA EL BOTÓN DEL SIDEBAR */
+.jh-navbar .sidebar-toggle {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+  margin-right: 0.5rem;
+}
+
+.jh-navbar .sidebar-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 @media screen and (min-width: 768px) {

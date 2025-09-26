@@ -14,7 +14,8 @@ export default defineComponent({
   components: {
     'entities-menu': EntitiesMenu,
   },
-  setup() {
+  emits: ['toggle-sidebar'], // Solo agregar esto
+  setup(props, { emit }) {
     const { showLogin } = useLoginModal();
     const accountService = inject<AccountService>('accountService');
     const currentLanguage = inject('currentLanguage', () => computed(() => navigator.language ?? 'es'), true);
@@ -45,6 +46,11 @@ export default defineComponent({
       }
     };
 
+    // SOLO AGREGAR ESTA FUNCIÓN
+    const toggleSidebar = () => {
+      emit('toggle-sidebar');
+    };
+
     return {
       logout,
       subIsActive,
@@ -57,6 +63,7 @@ export default defineComponent({
       inProduction,
       authenticated,
       productName: PRODUCT_NAME,
+      toggleSidebar, // Agregar esto
     };
   },
   methods: {

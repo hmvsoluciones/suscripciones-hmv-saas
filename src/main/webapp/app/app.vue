@@ -2,7 +2,7 @@
   <div id="app">
     <ribbon></ribbon>
     <div id="app-header">
-      <jhi-navbar></jhi-navbar>
+      <jhi-navbar @toggle-sidebar="toggleSidebar"></jhi-navbar>
     </div>
     <div class="container-fluid">
       <div class="card jh-card">
@@ -17,6 +17,8 @@
 
       <jhi-footer></jhi-footer>
     </div>
+
+    <sidebar-component :visible="sidebarVisible" @update:visible="sidebarVisible = $event" />
   </div>
 </template>
 
