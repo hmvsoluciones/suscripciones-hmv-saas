@@ -1,7 +1,7 @@
-import { defineComponent, computed } from 'vue';
+import { defineComponent, computed, watch } from 'vue';
 import { useLoginModal } from '@/account/login-modal';
 import { useStore } from '@/store';
-import { useRouter } from 'vue-router';
+import { onBeforeRouteLeave, useRoute, useRouter } from 'vue-router';
 import { PRODUCT_NAME } from '@/shared/config/constants/constants';
 
 export default defineComponent({
@@ -17,6 +17,12 @@ export default defineComponent({
     const { showLogin } = useLoginModal();
     const router = useRouter();
     const store = useStore();
+    const route = useRoute();
+
+    watch(route, (to, from) => {
+      console.log('Ruta cambiada:', to.path);
+      closeSidebar();
+    });
 
     const closeSidebar = (): void => {
       emit('update:visible', false);
@@ -27,6 +33,12 @@ export default defineComponent({
       setTimeout(() => {
         showLogin();
       }, 100);
+    };
+
+    const handleNavigation = (event: Event, path: string): void => {
+      closeSidebar();
+      // La navegación se manejará automáticamente por router-link
+      // Solo necesitamos cerrar el sidebar
     };
 
     const handleLogout = (): void => {
@@ -58,6 +70,8 @@ export default defineComponent({
       isAuthenticated,
       showAdminSection,
       PRODUCT_NAME,
+      showLogin,
+      handleNavigation,
     };
   },
 });

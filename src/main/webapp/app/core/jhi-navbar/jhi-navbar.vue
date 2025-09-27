@@ -22,7 +22,7 @@
       <font-awesome-icon icon="bars" />
     </b-navbar-toggle>
 
-    <b-collapse is-nav id="header-tabs" class="hideHMV">
+    <b-collapse is-nav id="header-tabs" v-if="false">
       <b-navbar-nav class="ml-auto">
         <b-nav-item to="/" exact>
           <span>

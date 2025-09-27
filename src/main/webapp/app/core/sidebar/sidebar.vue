@@ -24,10 +24,14 @@
               <div class="sidebar-group-header">
                 <small class="sidebar-group-title">Navegación</small>
               </div>
-              <router-link to="/" class="nav-link sidebar-nav-item" @click="closeSidebar" exact>
+              <button class="nav-link sidebar-nav-item" @click="handleNavigation($event, '/')" exact>
                 <font-awesome-icon icon="home" class="sidebar-icon" />
                 <span class="sidebar-text">Inicio</span>
-              </router-link>
+              </button>
+              <button class="nav-link sidebar-nav-item" @click="handleLoginClick" exact>
+                <font-awesome-icon icon="sign-in-alt" />
+                <span>Iniciar sesión</span>
+              </button>
             </div>
             <!-- Grupo de Catalogos-->
             <div class="sidebar-group" v-if="isAuthenticated">
