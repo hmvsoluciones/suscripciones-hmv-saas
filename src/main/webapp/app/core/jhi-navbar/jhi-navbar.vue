@@ -7,12 +7,12 @@
 
     <!-- RESTO DEL CÓDIGO ORIGINAL -->
     <b-navbar-brand class="logo" b-link to="/">
-      <span class="logo-img"></span>
       <span class="navbar-title">{{ productName }}</span> <span class="navbar-version">{{ version }}</span>
     </b-navbar-brand>
+
     <b-navbar-toggle
       right
-      class="jh-navbar-toggler d-lg-none"
+      class="jh-navbar-toggler d-lg-none hideHMV"
       href="javascript:void(0);"
       data-toggle="collapse"
       target="header-tabs"
@@ -22,7 +22,7 @@
       <font-awesome-icon icon="bars" />
     </b-navbar-toggle>
 
-    <b-collapse is-nav id="header-tabs">
+    <b-collapse is-nav id="header-tabs" class="hideHMV">
       <b-navbar-nav class="ml-auto">
         <b-nav-item to="/" exact>
           <span>
@@ -33,10 +33,6 @@
         <b-nav-item to="/" exact-active-class="active">
           <b-icon icon="speedometer2" class="mr-1"></b-icon>
           Dashboard
-        </b-nav-item>
-        <b-nav-item to="/" exact>
-          <b-icon icon="calendar3" class="mr-2"></b-icon>
-          Servicios
         </b-nav-item>
         <b-nav-item-dropdown right id="entity-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
           <template #button-content>

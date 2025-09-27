@@ -1,6 +1,8 @@
 import { defineComponent, computed } from 'vue';
 import { useLoginModal } from '@/account/login-modal';
 import { useStore } from '@/store';
+import { useRouter } from 'vue-router';
+import { PRODUCT_NAME } from '@/shared/config/constants/constants';
 
 export default defineComponent({
   name: 'SidebarComponent',
@@ -13,6 +15,7 @@ export default defineComponent({
   emits: ['update:visible'],
   setup(props, { emit }) {
     const { showLogin } = useLoginModal();
+    const router = useRouter();
     const store = useStore();
 
     const closeSidebar = (): void => {
@@ -28,7 +31,12 @@ export default defineComponent({
 
     const handleLogout = (): void => {
       closeSidebar();
-      // Aquí puedes agregar la lógica de logout si es necesario
+      localStorage.removeItem('jhi-authenticationToken');
+      sessionStorage.removeItem('jhi-authenticationToken');
+      store.logout();
+      if (router.currentRoute.value.path !== '/') {
+        router.push('/');
+      }
       console.log('Logout clicked');
     };
 
@@ -49,6 +57,7 @@ export default defineComponent({
       handleLogout,
       isAuthenticated,
       showAdminSection,
+      PRODUCT_NAME,
     };
   },
 });

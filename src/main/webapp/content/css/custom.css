@@ -312,3 +312,10 @@ textarea.form-control:focus {
     transform: translateY(0);
   }
 }
+/* ==========================================================================
+   Importantes HMV Soluciones
+   ========================================================================== */
+
+.hideHMV {
+  display: none !important;
+}
