@@ -60,7 +60,7 @@
             <td>
               <div v-if="producto.tipoProducto">
                 <router-link :to="{ name: 'TipoProductoView', params: { tipoProductoId: producto.tipoProducto.id } }">{{
-                  producto.tipoProducto.id
+                  producto.tipoProducto.nombre
                 }}</router-link>
               </div>
             </td>

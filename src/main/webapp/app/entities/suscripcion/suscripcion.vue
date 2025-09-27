@@ -63,14 +63,14 @@
             <td>{{ suscripcion.estado }}</td>
             <td>
               <div v-if="suscripcion.cliente">
-                <router-link :to="{ name: 'ClienteView', params: { clienteId: suscripcion.cliente.id } }">{{
-                  suscripcion.cliente.id
-                }}</router-link>
+                <router-link :to="{ name: 'ClienteView', params: { clienteId: suscripcion.cliente.id } }">
+                  {{ suscripcion.cliente.nombre }} - {{ suscripcion.cliente.razonSocial }}
+                </router-link>
               </div>
             </td>
             <td>
               <div v-if="suscripcion.plan">
-                <router-link :to="{ name: 'PlanView', params: { planId: suscripcion.plan.id } }">{{ suscripcion.plan.id }}</router-link>
+                <router-link :to="{ name: 'PlanView', params: { planId: suscripcion.plan.id } }">{{ suscripcion.plan.nombre }}</router-link>
               </div>
             </td>
             <td class="text-right">

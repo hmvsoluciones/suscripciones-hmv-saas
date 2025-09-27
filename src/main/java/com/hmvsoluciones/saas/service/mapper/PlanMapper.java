@@ -15,7 +15,6 @@ public interface PlanMapper extends EntityMapper<PlanDTO, Plan> {
     PlanDTO toDto(Plan s);
 
     @Named("productoId")
-    @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
     ProductoDTO toDtoProductoId(Producto producto);
 }

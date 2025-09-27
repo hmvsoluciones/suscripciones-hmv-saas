@@ -59,9 +59,9 @@
             <td>{{ pago.referencia }}</td>
             <td>
               <div v-if="pago.suscripcion">
-                <router-link :to="{ name: 'SuscripcionView', params: { suscripcionId: pago.suscripcion.id } }">{{
-                  pago.suscripcion.id
-                }}</router-link>
+                <router-link :to="{ name: 'SuscripcionView', params: { suscripcionId: pago.suscripcion.id } }">
+                  {{ pago.suscripcion.nombre }} - {{ pago.suscripcion.cliente.nombre }} - {{ pago.suscripcion.plan.nombre }}
+                </router-link>
               </div>
             </td>
             <td class="text-right">

@@ -102,7 +102,7 @@
                 v-for="clienteOption in clientes"
                 :key="clienteOption.id"
               >
-                {{ clienteOption.id }}
+                {{ clienteOption.nombre }} - {{ clienteOption.razonSocial }}
               </option>
             </select>
           </div>
@@ -115,7 +115,7 @@
                 v-for="planOption in plans"
                 :key="planOption.id"
               >
-                {{ planOption.id }}
+                {{ planOption.nombre }}
               </option>
             </select>
           </div>

@@ -18,12 +18,10 @@ public interface SuscripcionMapper extends EntityMapper<SuscripcionDTO, Suscripc
     SuscripcionDTO toDto(Suscripcion s);
 
     @Named("clienteId")
-    @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
     ClienteDTO toDtoClienteId(Cliente cliente);
 
     @Named("planId")
-    @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
     PlanDTO toDtoPlanId(Plan plan);
 }

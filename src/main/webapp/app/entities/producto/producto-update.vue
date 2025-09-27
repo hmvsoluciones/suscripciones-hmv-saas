@@ -69,7 +69,7 @@
                 v-for="tipoProductoOption in tipoProductos"
                 :key="tipoProductoOption.id"
               >
-                {{ tipoProductoOption.id }}
+                {{ tipoProductoOption.nombre }}
               </option>
             </select>
           </div>

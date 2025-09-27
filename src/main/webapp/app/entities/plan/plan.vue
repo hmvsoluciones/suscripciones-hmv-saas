@@ -64,7 +64,9 @@
             <td>{{ plan.tipoPago }}</td>
             <td>
               <div v-if="plan.producto">
-                <router-link :to="{ name: 'ProductoView', params: { productoId: plan.producto.id } }">{{ plan.producto.id }}</router-link>
+                <router-link :to="{ name: 'ProductoView', params: { productoId: plan.producto.id } }">{{
+                  plan.producto.nombre
+                }}</router-link>
               </div>
             </td>
             <td class="text-right">

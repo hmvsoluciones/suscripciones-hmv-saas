@@ -97,7 +97,7 @@
                 v-for="suscripcionOption in suscripcions"
                 :key="suscripcionOption.id"
               >
-                {{ suscripcionOption.id }}
+                {{ pago.suscripcion.id }} - {{ pago.suscripcion.cliente.nombre }} - {{ pago.suscripcion.plan.nombre }}
               </option>
             </select>
           </div>

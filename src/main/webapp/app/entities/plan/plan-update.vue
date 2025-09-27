@@ -98,7 +98,7 @@
                 v-for="productoOption in productos"
                 :key="productoOption.id"
               >
-                {{ productoOption.id }}
+                {{ productoOption.nombre }}
               </option>
             </select>
           </div>

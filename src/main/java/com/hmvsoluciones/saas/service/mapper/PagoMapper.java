@@ -15,7 +15,6 @@ public interface PagoMapper extends EntityMapper<PagoDTO, Pago> {
     PagoDTO toDto(Pago s);
 
     @Named("suscripcionId")
-    @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
     SuscripcionDTO toDtoSuscripcionId(Suscripcion suscripcion);
 }
