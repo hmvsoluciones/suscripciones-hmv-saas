@@ -58,6 +58,24 @@
   padding: 0.5rem 0;
 }
 
+// Estilos para los grupos
+.sidebar-group {
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-group-header {
+  padding: 0.5rem 1rem 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.sidebar-group-title {
+  color: var(--bs-gray-600);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+}
+
 .sidebar-nav {
   .sidebar-nav-item {
     display: flex;
@@ -73,22 +91,22 @@
     margin: 0.125rem 0.5rem;
 
     &:hover {
-      background-color: #f8f9fa; // Gris muy claro
+      background-color: #f8f9fa;
       color: var(--bs-primary);
       text-decoration: none;
     }
 
     &.router-link-active {
-      background-color: #e9ecef; // Gris claro para fondo
-      color: #495057; // Gris oscuro para texto
-      border-left: 4px solid var(--bs-primary); // Indicador lateral
+      background-color: #e9ecef;
+      color: #495057;
+      border-left: 4px solid var(--bs-primary);
 
       .sidebar-icon {
-        color: var(--bs-primary); // Color primario para el ícono
+        color: var(--bs-primary);
       }
 
       &:hover {
-        background-color: #dee2e6; // Gris un poco más oscuro al hover
+        background-color: #dee2e6;
         color: #495057;
       }
     }
@@ -96,7 +114,7 @@
     .sidebar-icon {
       width: 1rem;
       margin-right: 0.75rem;
-      color: #6c757d; // Gris medio para íconos inactivos
+      color: #6c757d;
       transition: color 0.2s ease-in-out;
     }
 
@@ -107,7 +125,7 @@
 }
 
 .sidebar-footer {
-  background-color: #f8f9fa; // Gris claro
+  background-color: #f8f9fa;
   flex-shrink: 0;
 }
 
@@ -126,5 +144,9 @@
   .sidebar-overlay {
     left: 0;
     width: 100%;
+  }
+
+  .sidebar-group {
+    margin-bottom: 1rem;
   }
 }

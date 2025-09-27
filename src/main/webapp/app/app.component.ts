@@ -22,6 +22,7 @@ export default defineComponent({
   },
   setup() {
     provide('alertService', useAlertService());
+
     const { loginModalOpen } = storeToRefs(useLoginModal());
 
     const sidebarVisible = ref(false);

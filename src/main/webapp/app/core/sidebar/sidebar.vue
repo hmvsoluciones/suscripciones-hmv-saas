@@ -19,20 +19,68 @@
       <div class="sidebar-content">
         <nav class="sidebar-nav">
           <div class="nav flex-column">
-            <router-link to="/" class="nav-link sidebar-nav-item" @click="closeSidebar" exact>
-              <font-awesome-icon icon="home" class="sidebar-icon" />
-              <span class="sidebar-text">Inicio</span>
-            </router-link>
+            <!-- Grupo: Navegación Principal -->
+            <div class="sidebar-group">
+              <div class="sidebar-group-header">
+                <small class="sidebar-group-title">Navegación</small>
+              </div>
+              <router-link to="/" class="nav-link sidebar-nav-item" @click="closeSidebar" exact>
+                <font-awesome-icon icon="home" class="sidebar-icon" />
+                <span class="sidebar-text">Inicio</span>
+              </router-link>
+            </div>
 
-            <a href="#" class="nav-link sidebar-nav-item" @click="handleLoginClick">
-              <font-awesome-icon icon="sign-in-alt" class="sidebar-icon" />
-              <span class="sidebar-text">Iniciar sesión</span>
-            </a>
+            <!-- Grupo: Autenticación -->
+            <div class="sidebar-group">
+              <div class="sidebar-group-header">
+                <small class="sidebar-group-title">Cuenta</small>
+              </div>
+              <a href="#" class="nav-link sidebar-nav-item" @click="handleLoginClick">
+                <font-awesome-icon icon="sign-in-alt" class="sidebar-icon" />
+                <span class="sidebar-text">Iniciar sesión</span>
+              </a>
+              <router-link to="/register" class="nav-link sidebar-nav-item" @click="closeSidebar">
+                <font-awesome-icon icon="user-plus" class="sidebar-icon" />
+                <span class="sidebar-text">Registrarse</span>
+              </router-link>
+            </div>
 
-            <router-link to="/register" class="nav-link sidebar-nav-item" @click="closeSidebar">
-              <font-awesome-icon icon="user-plus" class="sidebar-icon" />
-              <span class="sidebar-text">Registrarse</span>
-            </router-link>
+            <!-- Grupo: Administración (ejemplo condicional) -->
+            <div class="sidebar-group" v-if="showAdminSection">
+              <div class="sidebar-group-header">
+                <small class="sidebar-group-title">Administración</small>
+              </div>
+              <router-link to="/admin" class="nav-link sidebar-nav-item" @click="closeSidebar">
+                <font-awesome-icon icon="users" class="sidebar-icon" />
+                <span class="sidebar-text">Panel Admin</span>
+              </router-link>
+
+              <router-link to="/admin/users" class="nav-link sidebar-nav-item" @click="closeSidebar">
+                <font-awesome-icon icon="user-cog" class="sidebar-icon" />
+                <span class="sidebar-text">Gestión Usuarios</span>
+              </router-link>
+            </div>
+
+            <!-- Grupo: Configuración (ejemplo condicional) -->
+            <div class="sidebar-group" v-if="isAuthenticated">
+              <div class="sidebar-group-header">
+                <small class="sidebar-group-title">Mi Cuenta</small>
+              </div>
+              <router-link to="/profile" class="nav-link sidebar-nav-item" @click="closeSidebar">
+                <font-awesome-icon icon="user" class="sidebar-icon" />
+                <span class="sidebar-text">Perfil</span>
+              </router-link>
+
+              <router-link to="/settings" class="nav-link sidebar-nav-item" @click="closeSidebar">
+                <font-awesome-icon icon="cogs" class="sidebar-icon" />
+                <span class="sidebar-text">Configuración</span>
+              </router-link>
+
+              <a href="#" class="nav-link sidebar-nav-item" @click="handleLogout">
+                <font-awesome-icon icon="sign-out-alt" class="sidebar-icon" />
+                <span class="sidebar-text">Cerrar Sesión</span>
+              </a>
+            </div>
           </div>
         </nav>
       </div>

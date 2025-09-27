@@ -14,10 +14,8 @@
         </template>
         <login-form></login-form>
       </b-modal>
-
       <jhi-footer></jhi-footer>
     </div>
-
     <sidebar-component :visible="sidebarVisible" @update:visible="sidebarVisible = $event" />
   </div>
 </template>

@@ -63,7 +63,7 @@ export default defineComponent({
       inProduction,
       authenticated,
       productName: PRODUCT_NAME,
-      toggleSidebar, // Agregar esto
+      toggleSidebar,
     };
   },
   methods: {
