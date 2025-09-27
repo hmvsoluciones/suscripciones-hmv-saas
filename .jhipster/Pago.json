@@ -1,0 +1,46 @@
+{
+  "annotations": {
+    "changelogDate": "20250927003124"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "fechaPago",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "monto",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "metodoPago",
+      "fieldType": "MetodoPago",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "TARJETA,TRANSFERENCIA,EFECTIVO"
+    },
+    {
+      "fieldName": "referencia",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "200"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Pago",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "suscripcion",
+      "otherEntityRelationshipName": "pago",
+      "relationshipName": "suscripcion",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

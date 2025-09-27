@@ -1,0 +1,65 @@
+entity Cliente {
+  nombre String maxlength(50) required,
+  email String maxlength(256) required,
+  telefono String maxlength(30),
+  razonSocial String maxlength(150),
+  rfc String maxlength(13),
+  activo Boolean
+}
+
+entity TipoProducto {
+  nombre String required maxlength(100)
+}
+
+entity Producto {
+  nombre String required maxlength(50),
+  descripcion String maxlength(500) required,
+  activo Boolean  
+}
+
+entity Plan {
+  nombre String required maxlength(150),
+  descripcion String required maxlength(500),
+  precio BigDecimal required min(0),
+  duracionMeses Integer required min(1),
+  tipoPago TipoPagoPlan required // mensual, anual, etc.
+}
+
+enum TipoPagoPlan {
+  MENSUAL, ANUAL, UNICO_PAGO
+}
+
+entity Suscripcion {
+  fechaInicio LocalDate required,
+  fechaFin LocalDate required,
+  estado EstadoSuscripcion required
+}
+
+enum EstadoSuscripcion {
+  ACTIVA, CANCELADA, VENCIDA
+}
+
+entity Pago {
+  fechaPago LocalDate required,
+  monto BigDecimal required min(0),
+  metodoPago MetodoPago required,
+  referencia String maxlength(200)
+}
+
+enum MetodoPago {
+  TARJETA, TRANSFERENCIA, EFECTIVO
+}
+
+// Relaciones
+relationship ManyToOne {
+  Producto to TipoProducto,
+  Plan to Producto,
+  Suscripcion to Cliente,
+  Suscripcion to Plan,
+  Pago to Suscripcion
+}
+
+paginate Cliente, Producto, Plan, Suscripcion, Pago, TipoProducto with pagination
+service all with serviceClass
+dto all with mapstruct
+filter all

@@ -1,0 +1,7 @@
+export enum MetodoPago {
+  TARJETA = 'TARJETA',
+
+  TRANSFERENCIA = 'TRANSFERENCIA',
+
+  EFECTIVO = 'EFECTIVO',
+}

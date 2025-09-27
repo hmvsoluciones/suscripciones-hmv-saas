@@ -1,0 +1,53 @@
+{
+  "annotations": {
+    "changelogDate": "20250927003123"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "fechaInicio",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fechaFin",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "EstadoSuscripcion",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "ACTIVA,CANCELADA,VENCIDA"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Suscripcion",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "cliente",
+      "otherEntityRelationshipName": "suscripcion",
+      "relationshipName": "cliente",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "plan",
+      "otherEntityRelationshipName": "suscripcion",
+      "relationshipName": "plan",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "pago",
+      "otherEntityRelationshipName": "suscripcion",
+      "relationshipName": "pago",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}
